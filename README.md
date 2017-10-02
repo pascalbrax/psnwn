@@ -1,5 +1,5 @@
 # psnwn
-**Pascal Simple Neverwinter Nights server check**
+**Pascal Simple Neverwinter Nights server scan**
 
 This is the code used for years on www.iscandar.ch
 
@@ -25,13 +25,15 @@ Example:
         echo "Server online!" 
         echo "Server name: $nwn_server";
         echo "Players Online: $nwn_players";
+     } else {
+        echo "Server offline!";
      }
      
 Useful supported variables to include in your code are:
 
 ``$nwn_online``     If this is TRUE then server can be considered online and responding.
 
-``$nwn_country``    Country name of the server by geoIP.
+``$nwn_country``    Country name of the server by geoIP (needs to be manually turned on)
 
 ``$nwn_server``     Server's name
 
