@@ -3,7 +3,10 @@
 
 This is the code used for years on www.iscandar.ch
 
+![logo](http://www.iscandar.ch/nwn1.png)
+
 The main difference between this script and all the other PHP scripts found everywhere, is that this code contains a second backup scan that works even if no GameSpy fixes have been enabled on the NWN server side. More info: http://www.neverwinternights.info/builders_hosts.htm
+
 
 HOW TO USE:
 ===========
