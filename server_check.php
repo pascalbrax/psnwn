@@ -36,8 +36,6 @@ usable variables to include in your code are:
 */
 
 
-
-
 // gamespy method
 
 $connect = fsockopen( "udp://" . $ipaddr, $port, $errno, $errstr, $timeout );
@@ -51,7 +49,7 @@ fclose($connect);
   if ($output) {
 	// Server is online!
     $nwn_online = TRUE;
-    $nwn_country = geoip_country_name_by_name ( $ipaddr );
+    //$nwn_country = geoip_country_name_by_name ( $ipaddr ); // if you have GeoIP extension, you can uncomment this line.
 
     $lines = explode( "\x00", $output );
 
@@ -250,7 +248,7 @@ if (!$nwn_online) {
 		$nwn_category = "Unknown"; $nwn_category_id = 0;
 		
 		$nwn_online = TRUE;
-        $nwn_country = geoip_country_name_by_name ( $ipaddr );
+	//$nwn_country = geoip_country_name_by_name ( $ipaddr ); // if you have GeoIP extension, you can uncomment this line.
 		}
 	
 	}
