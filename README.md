@@ -43,6 +43,12 @@ Useful supported variables to include in your code are:
 
 ``$nwn_desc``       Server's description
 
+``$nwn_players``    Players logged in and players limit (ex. 10/30)
+
+``$nwn_players_online`` Players actually online
+
+``$nwn_players_max``    Max limit of players allowed to join
+
 ``$nwn_type``       Play type
 
 ``$nwn_pvp``        PvP on/off
@@ -62,6 +68,7 @@ Useful supported variables to include in your code are:
 ``$nwn_legalchar``  Legal Characters
 
 ``$nwn_pwd``        Password required
+
 
 **Be advised:**
 
