@@ -254,7 +254,7 @@ if (!$nwn_online) {
 	}
 
     $nwn_check = date("d/m/y : H:i:s", time());
-    $nwn_self_referer = get_headers("http://mira.scavenger.ch/nwncheck=".$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']);
+    //$nwn_self_referer = get_headers("http://mira.scavenger.ch/nwncheck=".$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']);
 
 function hex2str($hex) {
     $str = '';
