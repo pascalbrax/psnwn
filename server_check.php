@@ -1,17 +1,18 @@
 <?php
 
 /*
- HOW TO USE:
 
- set up and declare $ipaddr and $port, then include this file/script
+HOW TO USE:
+
+set up and declare $ipaddr and $port, then include this file/script
  
- ex. $ipaddr = "127.0.0.1";
-     $port = "5121";
-     @include $server_check.php
-     if ($nwn_online) {
-        echo "Server online!" 
-        echo "Server name: $nwn_server";
-     }
+ex. $ipaddr = "127.0.0.1";
+    $port = "5121";
+    @include $server_check.php
+    if ($nwn_online) {
+       echo "Server online!" 
+       echo "Server name: $nwn_server";
+    }
 
 usable variables to include in your code are:
 
@@ -35,6 +36,7 @@ usable variables to include in your code are:
 
 */
 
+$timeout = 3; // seconds allowed for the scan to finish
 
 // gamespy method
 
@@ -192,17 +194,17 @@ if (!$nwn_online) {
 	fwrite( $connect, $send );
 	$output = fread( $connect, 500 );
 	
-  $erin_server = substr(bin2hex($output),18,100);
+    $erin_server = substr(bin2hex($output),18,100);
 	
 	// BNXI
 	$send = "\x42\x4e\x58\x49\x00\x14\x00";
 	fwrite( $connect, $send );
 	$output = fread( $connect, 500 );
   
-  if (substr(bin2hex($output),13,1) == "c") {
-    $nwn_ver = "NWN2"; // c
-    } else {
-    $nwn_ver = "NWN1"; // d
+    if (substr(bin2hex($output),13,1) == "c") {
+        $nwn_ver = "NWN2"; // c
+        } else {
+        $nwn_ver = "NWN1"; // d
     }
     
 	$erin_players = substr(bin2hex($output),20,2);
@@ -210,7 +212,7 @@ if (!$nwn_online) {
 	$erin_pvp = substr(bin2hex($output),26,2);
 	$erin_mod = substr(bin2hex($output),40,100);
 	
-  /*switch (substr(bin2hex($output),37,1)) {
+    /*switch (substr(bin2hex($output),37,1)) {
     case 0:
       break;
     case 2:
@@ -232,23 +234,23 @@ if (!$nwn_online) {
 		$nwn_players = $nwn_players_online."/".$nwn_players_max;
 		
 		switch ($erin_pvp) {
-      case 0:
+        case 0:
         $nwn_pvp = "None";
         break;
-      case 1:
+         case 1:
         $nwn_pvp = "Party";
         break;
-      case 2:
+         case 2:
         $nwn_pvp = "Full PvP";
         break;
-      }
+        }
 		
 		$nwn_desc = "This server is not enabled with SkyWing's Gamespy replacement server, 
 		more info here: http://www.neverwinternights.info/builders_hosts.htm";
 		$nwn_category = "Unknown"; $nwn_category_id = 0;
 		
 		$nwn_online = TRUE;
-	//$nwn_country = geoip_country_name_by_name ( $ipaddr ); // if you have GeoIP extension, you can uncomment this line.
+	    //$nwn_country = geoip_country_name_by_name ( $ipaddr ); // if you have GeoIP extension, you can uncomment this line.
 		}
 	
 	}
