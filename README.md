@@ -19,10 +19,11 @@ Example:
 
     $ipaddr = "127.0.0.1";
     $port = "5121";
-    @include $server_check.php
+    $timeout = 5;
+    include "server_check.php";
 
      if ($nwn_online) {
-        echo "Server online!" 
+        echo "Server online!";
         echo "Server name: $nwn_server";
         echo "Players Online: $nwn_players";
      } else {
@@ -45,7 +46,7 @@ Useful supported variables to include in your code are:
 
 ``$nwn_players``    Players logged in and players limit (ex. 10/30)
 
-``$nwn_players_online`` Amount of players actually online
+``$nwn_players_online`` Number of players online
 
 ``$nwn_players_max``    Max limit of players allowed to join
 
