@@ -36,7 +36,9 @@ usable variables to include in your code are:
 
 */
 
-$timeout = 3; // seconds allowed for the scan to finish
+if (!$timeout) {
+	$timeout = 3; // seconds allowed for the scan to finish
+}
 
 // gamespy method
 
