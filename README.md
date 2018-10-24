@@ -45,7 +45,7 @@ Useful supported variables to include in your code are:
 
 ``$nwn_players``    Players logged in and players limit (ex. 10/30)
 
-``$nwn_players_online`` Players actually online
+``$nwn_players_online`` Amount of players actually online
 
 ``$nwn_players_max``    Max limit of players allowed to join
 
