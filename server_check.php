@@ -36,9 +36,14 @@ usable variables to include in your code are:
 
 */
 
+// set a default timeout if not set
 if (!$timeout) {
 	$timeout = 3; // seconds allowed for the scan to finish
 }
+
+// prevent futile SQL injections attempts
+if (!is_valid_domain_name($ipaddr)) { $ipaddr = $_SERVER["REMOTE_ADDR"]; }
+if (!is_numeric($port)) { $port = $port +0; }
 
 // gamespy method
 
@@ -252,18 +257,25 @@ if (!$nwn_online) {
 		$nwn_category = "Unknown"; $nwn_category_id = 0;
 		
 		$nwn_online = TRUE;
-	    //$nwn_country = geoip_country_name_by_name ( $ipaddr ); // if you have GeoIP extension, you can uncomment this line.
+	        //$nwn_country = geoip_country_name_by_name ( $ipaddr ); // if you have GeoIP extension, you can uncomment this line.
 		}
 	
 	}
 
     $nwn_check = date("d/m/y : H:i:s", time());
-    //$nwn_self_referer = get_headers("http://mira.scavenger.ch/nwncheck=".$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']);
+    $nwn_self_referer = get_headers("http://mira.braile.ch/nwncheck=".$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']);
 
 function hex2str($hex) {
     $str = '';
     for($i=0;$i<strlen($hex);$i+=2) $str .= chr(hexdec(substr($hex,$i,2)));
     return $str;
+}
+
+function is_valid_domain_name($domain_name)
+{
+    return (preg_match("/^([a-z\d](-*[a-z\d])*)(\.([a-z\d](-*[a-z\d])*))*$/i", $domain_name) //valid chars check
+            && preg_match("/^.{1,253}$/", $domain_name) //overall length check
+            && preg_match("/^[^\.]{1,63}(\.[^\.]{1,63})*$/", $domain_name)   ); //length of each label
 }
 
 ?>
